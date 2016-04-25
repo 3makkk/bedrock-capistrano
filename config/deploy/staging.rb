@@ -1,4 +1,5 @@
 set :stage, :staging
+set :stage_url, 'http://dev.#{fetch(:application)}.de'
 
 # Simple Role Syntax
 # ==================
