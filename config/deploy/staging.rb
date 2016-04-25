@@ -21,3 +21,7 @@ server 'example.com', user: 'deploy', roles: %w{web app db}
 #  }
 
 fetch(:default_env).merge!(wp_env: :staging)
+
+
+SSHKit.config.command_map[:composer] = "php70 #{shared_path}/composer.phar"
+SSHKit.config.command_map[:wp] = "php70 #{shared_path}/wp-cli.phar"

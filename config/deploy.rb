@@ -59,3 +59,9 @@ end
 # Note that you need to have WP-CLI installed on your server
 # Uncomment the following line to run it on deploys if needed
 # after 'deploy:publishing', 'deploy:update_option_paths'
+
+SSHKit.config.command_map[:composer] = "php #{shared_path.join("composer.phar")}"
+
+namespace :deploy do
+  after :starting, 'composer:install_executable'
+end
