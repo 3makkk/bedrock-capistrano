@@ -39,8 +39,8 @@ namespace :db do
 		on roles(:db) do
 
 			run_locally do
-				execute :wp, "db import db_backups/#{fetch(:backup_filename)}.sql"
-				execute :wp, "search-replace #{fetch(:stage_url)} #{fetch(:wp_localurl)}"
+				system ("wp db import db_backups/#{fetch(:backup_filename)}.sql")
+				system ("wp search-replace #{fetch(:stage_url)} #{fetch(:wp_localurl)}")
 				execute :rm, "db_backups/#{fetch(:backup_filename)}.sql"
 
 				if Dir['db_backups/*'].empty?
